@@ -135,4 +135,56 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
+    if (document.querySelector(".multi-range")) {
+        const multiRage = document.querySelectorAll(".multi-range");
+
+        multiRage.forEach(el => {
+            const lowerSlider = el.querySelector(".lower"),
+                    upperSlider = el.querySelector(".upper");
+            let lowerVal = parseInt(lowerSlider.value);
+            let upperVal = parseInt(upperSlider.value);
+            let lowerSliderCount = el.querySelector(".filter-form__range-value--1");
+            let upperSliderCount = el.querySelector(".filter-form__range-value--2");
+
+            upperSlider.oninput = function () {
+                lowerVal = parseInt(lowerSlider.value);
+                upperVal = parseInt(upperSlider.value);
+
+
+                if (upperVal < lowerVal + 1) {
+                    lowerSlider.value = upperVal - 1;
+
+                    if (lowerVal == lowerSlider.min) {
+                        upperSlider.value = 1;
+                    }
+                }
+                lowerSliderCount.textContent = lowerVal;
+                upperSliderCount.textContent = upperVal;
+                console.log(lowerVal);
+            };
+
+            lowerSlider.oninput = function () {
+                lowerVal = parseInt(lowerSlider.value);
+                upperVal = parseInt(upperSlider.value);
+
+                if (lowerVal > upperVal - 1) {
+                    upperSlider.value = lowerVal + 1;
+
+                    if (upperVal == upperSlider.max) {
+                        lowerSlider.value = parseInt(upperSlider.max) - 1;
+                    }
+
+                }
+                lowerSliderCount.textContent = lowerVal;
+                upperSliderCount.textContent = upperVal;
+
+                console.log(upperVal);
+                console.log(upperSlider.value);
+                console.log(lowerVal);
+            };
+
+        })
+
+    }
+
 });
