@@ -53,6 +53,8 @@ function html() {
 // Сборка JS модулей с помощью webpack | Building JS modules using webpack
 function scripts() {
     return src([
+        'node_modules/jquery/dist/jquery.min.js',
+        'node_modules/simplebar/dist/simplebar.min.js',
         'src/JS/index.js'
     ])
         .pipe(gulpIf(isDevelopment, sourcemaps.init())) // Инициализация source-maps (Работает только в режиме разработки) | Source-maps initialization (Only works in development mode)
@@ -91,7 +93,7 @@ function video() {
 
 // Спрайт для векторной графики
 function svgsprite() {
-    return src('src/svg/src/**/*')
+    return src('src/svg/stack/**/*')
         .pipe(sprite({
             shape: {
                 dimension: {

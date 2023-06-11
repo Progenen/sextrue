@@ -1,92 +1,24 @@
-<div class="filter">
+<div class="filter__catalog">
     <div class="container">
-        <div class="row">
-            <div class="filter__search-params filter-search-params">
-                Поиск по параменатрам
-                <svg>
-                    <use xlink:href='svg/dest/stack/sprite.svg#arrow-nav'></use>
-                </svg>
+        <div class="row filter__bottom">
+            <div class="filter-sort__left">
+                <div class="filter-sort__title">
+                    Проститутки Москвы
+                </div>
+                <div class="filter-sort__btn" data-filter-btn>
+                    <svg>
+                        <use xlink:href='svg/dest/stack/sprite.svg#filter'></use>
+                    </svg>
+                    Фильтр
+                </div>
             </div>
-            <form action="#" class="filter__form filter-form">
-                <div class="filter-form__item">
-                    <div class="filter-form__item-text">Возраст</div>
-                    <div class="filter-form__item-drop">
-                        <div class="filter-form__range multi-range">
-                            <div class="filter-form__range-input multi-range__input">
-                                <input class="upper" type="range" step="1" min="18" max="65" value="18" name="filterAgeMin">
-                                <input class="" type="range" step="1" min="18" max="65" value="65" name="filterAgeMax">
-                            </div>
-                            <div class="filter-form__range-values">
-                                <span class="filter-form__range-value filter-form__range-value--1">18</span>
-                                <span class="filter-form__range-value filter-form__range-value--2">65</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="filter-form__item">
-                    <div class="filter-form__item-text">Рост</div>
-                    <div class="filter-form__item-drop">
-                        <div class="filter-form__range multi-range">
-                            <div class="filter-form__range-input filter-form__range-input--sm multi-range__input">
-                                <input class="lower" type="range" step="1" min="150" max="65" value="200" name="filterAgeMin">
-                                <input class="upper" type="range" step="1" min="150" max="65" value="200" name="filterAgeMax">
-                            </div>
-                            <div class="filter-form__range-values">
-                                <span class="filter-form__range-value filter-form__range-value--1">65</span>
-                                <span class="filter-form__range-value filter-form__range-value--2">200</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="filter-form__item">
-                    <div class="filter-form__item-text">Вес</div>
-                    <div class="filter-form__item-drop">
-                        <div class="filter-form__range multi-range">
-                            <div class="filter-form__range-input multi-range__input">
-                                <input class="lower" type="range" step="1" min="18" max="65" value="5" name="filterAgeMin">
-                                <input class="upper" type="range" step="1" min="18" max="65" value="45" name="filterAgeMax">
-                            </div>
-                            <div class="filter-form__range-values">
-                                <span class="filter-form__range-value filter-form__range-value--1">18</span>
-                                <span class="filter-form__range-value filter-form__range-value--2">65</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="filter-form__item">
-                    <div class="filter-form__item-text">Грудь</div>
-                    <div class="filter-form__item-drop">
-                        <div class="filter-form__range multi-range">
-                            <div class="filter-form__range-input multi-range__input">
-                                <input class="lower" type="range" step="1" min="18" max="65" value="5" name="filterAgeMin">
-                                <input class="upper" type="range" step="1" min="18" max="65" value="45" name="filterAgeMax">
-                            </div>
-                            <div class="filter-form__range-values">
-                                <span class="filter-form__range-value filter-form__range-value--1">18</span>
-                                <span class="filter-form__range-value filter-form__range-value--2">65</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="filter-form__item">
-                    <div class="filter-form__item-text">Цена (за 1 час)</div>
-                    <div class="filter-form__item-drop">
-                        <div class="filter-form__range multi-range">
-                            <div class="filter-form__range-input multi-range__input">
-                                <input class="lower" type="range" step="1" min="18" max="65" value="5" name="filterAgeMin">
-                                <input class="upper" type="range" step="1" min="18" max="65" value="45" name="filterAgeMax">
-                            </div>
-                            <div class="filter-form__range-values">
-                                <span class="filter-form__range-value filter-form__range-value--1">18</span>
-                                <span class="filter-form__range-value filter-form__range-value--2">65</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="filter-form__item">
-                    <button class="filter-form__btn" type="submit">Показать</button>
-                </div>
+            <form class="filter-sort__form">
+                <select class="filter-sort__input" data-custom-select name="sort" id="">
+                    <option value="moscow">Сортировать</option>
+                    <option value="kaliningrad">Калининград</option>
+                    <option value="spb">Санкт-Петербург</option>
+                </select>
             </form>
-        </div>
+        </>
     </div>
 </div>

@@ -1,12 +1,16 @@
 
-@import "all";
 
 // Libs
 @import "select";
+@import "../../node_modules/simplebar/dist/simplebar.min.css";
 
 // Main
 @import "support";
+@import "all";
 @import "script-classes";
 @import "header";
 @import "filter";
+@import "catalog";
+@import "single";
 @import "footer";
+@import "media";

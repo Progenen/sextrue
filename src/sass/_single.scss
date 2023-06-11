@@ -1,0 +1,145 @@
+.single {
+
+    &__block {
+    }
+}
+.single-block {
+    padding: rem(20) rem(50);
+    background: #FFFFFF;
+    border: 1px solid #C0C0C0;
+    border-radius: 8px;
+    &__about {
+    }
+}
+.single-block-about {
+    border-radius: 15px;
+    padding-left: 0;
+    padding-top: 0;
+    &__media {
+        width: 34.2%;
+        position: relative;
+    }
+
+    &__slider {
+
+    }
+
+    &__slider-item {
+        border-radius: 15px;
+        overflow: hidden;
+        img {
+            width: 100%;
+            height: 100%;
+            display: block;
+            object-fit: cover;
+        }
+    }
+
+    &__dots {
+    }
+
+    &__info {
+        margin-top: 25px;
+    }
+
+    &__title {
+    }
+
+    &__name {
+    }
+
+    &__icons {
+    }
+
+    &__price {
+    }
+
+    &__list {
+    }
+
+    &__phone {
+    }
+
+    &__metro {
+    }
+
+    &__params {
+    }
+
+    &__tags {
+    }
+
+    &__descr {
+    }
+}
+.row {
+}
+.single-block-about-list {
+
+    &__item {
+    }
+
+    &__name {
+    }
+
+    &__cur {
+    }
+}
+.single-block-about-params {
+
+    &__item {
+    }
+
+    &__cur {
+    }
+}
+.single-block-about-tags {
+
+    &__list {
+    }
+
+    &__item {
+    }
+
+    &__link {
+    }
+}
+.tags {
+
+    &__list {
+    }
+
+    &__item {
+    }
+
+    &__link {
+    }
+}
+.single-block-about-price {
+
+    &__list {
+    }
+
+    &__item {
+    }
+
+    &__name {
+    }
+
+    &__cur {
+    }
+
+    &__sublist {
+    }
+}
+.single-block-about-price-sublist {
+
+    &__item {
+    }
+
+    &__name {
+    }
+
+    &__cur {
+    }
+}

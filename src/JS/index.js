@@ -1,3 +1,71 @@
+class MinModalJS {
+    modalOpen () {
+        this.modal.classList.add('min-modal-js-active');
+        document.querySelector(".wrapper").classList.add('lock');
+        document.body.classList.add('lock');
+        if (this.whenModalOpen) {
+            this.whenModalOpen();
+        }
+    }
+
+    modalClose () {
+        this.modal.classList.remove('min-modal-js-active');
+        document.querySelector(".wrapper").classList.remove('lock');
+        document.body.classList.remove('lock');
+        this.whenModalClose();
+    }
+    modalDestroy() {
+        this.modal.remove();
+    }
+
+    constructor(inner, obj) {
+        if (obj.keyOpen === undefined) {
+            obj.keyOpen = 'Escape';
+        }
+
+        this.btns = document.querySelectorAll(obj.buttonsActive);
+        this.inner = document.querySelector(inner);
+        this.closeBtns = document.querySelectorAll(obj.buttonsDisActive);
+        this.keyOpen = obj.keyOpen;
+        this.modalOutsideClick = obj.modalOutsideClick;
+        this.modal = document.createElement('div');
+        this.modal.classList.add('modal-wrapper');
+        this.whenModalClose = obj.whenModalClose;
+        this.whenModalOpen = obj.whenModalOpen;
+        this.modal.append(this.inner);
+        document.querySelector(".wrapper").append(this.modal);
+        
+        this.btns.forEach(element => {
+            element.addEventListener('click', (e) =>{
+                e.preventDefault();
+                this.modalOpen();
+            });
+        });
+
+        this.closeBtns.forEach(element => {
+            element.addEventListener('click', (e) =>{
+                e.preventDefault();
+                this.modalClose();
+            });
+        });
+
+        if (this.modalOutsideClick != false) {
+            this.modal.addEventListener('click', (e) => {
+                if (e.target === this.modal) {
+                    this.modalClose();
+                }
+            });
+        }
+
+        if (this.key != false) {
+            document.addEventListener('keydown', (e)=> {
+                if (e.key === this.keyOpen) { 
+                    this.modalClose();
+                }
+            });
+        }
+    }
+}
 document.addEventListener('DOMContentLoaded', function () {
 
     // Burger menu (Header)
@@ -14,7 +82,7 @@ document.addEventListener('DOMContentLoaded', function () {
             this.body.classList.add('lock');
             e.target.classList.add('collapsed');
         }
-
+ 
         closeMenu = (e) => {
             this.menu.classList.remove('show');
             this.body.classList.remove('lock');
@@ -98,12 +166,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }
 
         const mobileFn = () => {
-            for (let j = 0; j < selects.length; j++) {
-                let mobileSelect = selects[j]
-                mobileSelect.addEventListener('change', () => {
-                    mobileSelect.nextElementSibling.querySelector('.custom-select__current').textContent = mobileSelect.value
-                })
-            }
+            cSelectCurrent.addEventListener('click', toggleClass)
         }
 
         createCustomDom(currentTextValue, currentValue)
@@ -185,6 +248,96 @@ document.addEventListener('DOMContentLoaded', function () {
 
         })
 
+    }
+
+    if (document.querySelector(".header")) {
+        const headerCatBtns = document.querySelectorAll("[data-params-btn]");
+        const headerCat = document.querySelector(".filter-search-params__drop");
+        const filterBtn = document.querySelectorAll("[data-filter-btn]");
+        const filter = document.querySelector(".filter__top");
+        const filterCat = document.querySelector(".filter-search-params__drop");
+        const filterTabTitle = document.querySelectorAll("[data-params-tab-title]");
+        const filterTabContent = document.querySelectorAll("[data-params-tab-content");
+
+        filterTabTitle.forEach((el, i) => {
+            el.addEventListener("click", () => {
+                filterTabTitle.forEach((title, j) => {
+                    title.classList.remove("active");
+                    filterTabContent[j].classList.remove("active");
+                });
+                el.classList.add("active");
+                filterTabContent[i].classList.add("active");
+            })
+        })
+
+        headerCatBtns.forEach(element => {
+            element.addEventListener("click", () => {
+                document.body.classList.toggle("lock");
+                filter.classList.remove("active");
+                headerCat.classList.toggle("active");
+            })
+        }); 
+
+        if (window.innerWidth <= 1040) {
+    
+            filterBtn.forEach(element => {
+                element.addEventListener("click", () => {
+                    console.log("ok");
+                    filterCat.classList.remove("active");
+                    filter.classList.toggle("active");
+                })
+            });
+    
+            document.body.append(filter);
+            document.body.append(headerCat);
+        }
+    }
+
+    if (document.querySelector(".catalog-item__phone")) {
+        const phoneText = document.querySelectorAll(".catalog-item-phone__text");
+        const phoneSwap = document.querySelectorAll(".catalog-item-phone__phone");
+
+        document.querySelectorAll(".catalog-item__footer").forEach((element, i) => {
+            element.addEventListener("click", () => {
+                phoneText[i].classList.toggle("active");
+                phoneSwap[i].classList.toggle("active");
+            })
+        });
+    }
+
+    if (window.innerWidth <= 992) {
+        const paramsTitles = document.querySelectorAll(".filter-search-params__item-title");
+        const paramsLists = document.querySelectorAll(".filter-search-params__item-list");
+
+        paramsTitles.forEach((el, i) => {
+            el.addEventListener("click", () => {
+                el.classList.toggle("active");
+                paramsLists[i].classList.toggle("active");
+            })
+        })
+    }
+
+    if (document.querySelector("[data-video]")) {
+        const video = document.querySelectorAll('[data-video]');
+        const videoIframe = document.querySelector("video");
+        const videoBody = document.querySelector(".modal-video__body");
+        const newModal = new MinModalJS('.modal-video', {
+            buttonsActive: '[data-video]',
+            buttonsDisActive: '.modal-video__close',
+            keyOpen: false, // Or false
+            modalOutsideClick: true, // if true, modal closed when you click outside content modal
+            whenModalClose: function () {
+                videoIframe.pause();
+            }
+        });
+        video.forEach(element => {
+            element.addEventListener('click', (e) => {
+                e.preventDefault();
+                if (videoIframe.getAttribute('src') != element.getAttribute('href')) {
+                    videoIframe.src = element.getAttribute('href');
+                }
+            });
+        });
     }
 
 });

@@ -11,12 +11,6 @@ body {
     font-weight: 400;
 }
 
-body,
-html {
-    height: 100%;
-    overflow-x: hidden;
-}
-
 a {
     &:hover {
         text-decoration: none;
@@ -24,6 +18,8 @@ a {
 }
 
 .wrapper {
+    position: relative;
+    overflow-x: hidden;
     display: flex;
     flex-direction: column;
     height: 100%;
@@ -47,8 +43,8 @@ footer {
 .row {
     display: flex;
 }
-
-input[type=range] {
+ 
+ input[type=range] {
     box-sizing: border-box;
     appearance: none;
     width: 400px;
@@ -61,7 +57,8 @@ input[type=range] {
     outline: none;
     background: linear-gradient(grey, grey) no-repeat center;
     /* Use a linear gradient to generate only the 2px height background */
-    background-size: 100% 2px;  
+    background-size: 100% 2px;
+    pointer-events: none;
  
     &:active,
     &:focus {
@@ -95,7 +92,7 @@ input[type=range] {
  .multi-range__input {
     position: relative;
     height: 50px;
- 
+    
     input[type=range] {
        position: absolute;
        
@@ -114,3 +111,105 @@ input[type=range] {
        }
     }
  }
+
+ .tags {
+    &__list {
+        display: flex;
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    &__item {
+        margin-top: 5px;
+        margin-right: 5px;
+    }
+
+    &__link {
+        text-decoration: none;
+        padding: 2px 3px;
+        font-style: normal;
+        font-weight: 300;
+        font-size: 18px;
+        line-height: 141.4%;
+        text-decoration-line: underline;
+        color: #EE3E84;
+        border: 1px solid #EE3E84;
+        border-radius: 2px;
+        white-space: nowrap;
+    }
+ }
+
+ .lock {
+    overflow: hidden;
+ }
+
+ .modal-wrapper {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    transition: all .5s;
+    background: rgba(0,0,0, .6);
+    opacity: 0;
+    visibility: hidden;
+    z-index: 10000;
+}
+.modal-wrapper.min-modal-js-active {
+    visibility: visible;
+    transition: .3s;
+    opacity: 1;
+}
+
+ .modal-video {
+    background: #fff;
+    max-width: 602px;
+    padding: 15px 20px 15px 20px;
+    box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    margin: auto;
+
+    &__header {
+        display: flex;
+        justify-content: flex-end;
+        margin-bottom: rem(22);
+    }
+
+    &__close {
+        fill: $color3;
+        cursor: pointer;
+
+        svg {
+            width: 33px;
+            height: 33px;
+        }
+    }
+
+    &__body {
+        video {
+            width: 100%;
+            border-radius: 7px;
+        }
+    }
+}
+
+.modal-wrapper {
+    background-color: rgba($color: #000000, $alpha: .2);
+    display: flex;
+    justify-content: center;
+    align-self: center;
+}
+
+
+ @keyframes blinking {
+    0% {
+        background-color: #133A67;
+    }
+    50% {
+        background: #ffffff7a;
+    }
+    100% {
+        background-color: #133A67;
+    }
+  }
